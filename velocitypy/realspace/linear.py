@@ -1,19 +1,22 @@
 import numpy as np
 from scipy.integrate import simps
 
+
 def correlation(SpatialR, Wavemode_k, PowerSpectrum):
-    '''Function to compute the linear correlation function from
+    """Function to compute the linear correlation function from
     an input linear power spectrum.
-    '''
+    """
     LenR = len(SpatialR)
     Corr_Function = np.empty(LenR)
-    product = Wavemode_k**2 * PowerSpectrum
+    product = Wavemode_k ** 2 * PowerSpectrum
 
     for i in range(LenR):
-      integral = product * np.sin(Wavemode_k*SpatialR[i])/(Wavemode_k*SpatialR[i])
-      Corr_Function[i] = simps(integral, Wavemode_k)
+        integral = (
+            product * np.sin(Wavemode_k * SpatialR[i]) / (Wavemode_k * SpatialR[i])
+        )
+        Corr_Function[i] = simps(integral, Wavemode_k)
 
-    Corr_Function /= 2*(np.pi**2)
+    Corr_Function /= 2 * (np.pi ** 2)
     return Corr_Function
 
 
@@ -38,16 +41,16 @@ def radial_mean(SpatialR, Wavemode_k, PowerSpectrum, OmegaM):
                        velocity. In units of h^{-1} Mpc.
     """
     SpatialR = np.asarray(SpatialR)
-    growth_rate = OmegaM**0.545
+    growth_rate = OmegaM ** 0.545
 
     LenR = len(SpatialR)
     Mean_Velocity = np.empty(LenR)
     product = Wavemode_k * PowerSpectrum
 
     for i in range(LenR):
-        kr = Wavemode_k*SpatialR[i]
-        integral = product * ( (np.sin(kr)/kr**2) - (np.cos(kr)/kr) )
+        kr = Wavemode_k * SpatialR[i]
+        integral = product * ((np.sin(kr) / kr ** 2) - (np.cos(kr) / kr))
         Mean_Velocity[i] = simps(integral, Wavemode_k)
 
-    Mean_Velocity *= -(growth_rate/np.pi**2)
+    Mean_Velocity *= -(growth_rate / np.pi ** 2)
     return Mean_Velocity
