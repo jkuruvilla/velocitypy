@@ -2,9 +2,9 @@ import numpy as np
 from scipy.integrate import simps
 
 def correlation(SpatialR, Wavemode_k, PowerSpectrum):
-    """Function to compute the linear correlation function from
+    '''Function to compute the linear correlation function from
     an input linear power spectrum.
-    """
+    '''
     LenR = len(SpatialR)
     Corr_Function = np.empty(LenR)
     product = Wavemode_k**2 * PowerSpectrum
