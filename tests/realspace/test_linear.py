@@ -8,4 +8,4 @@ power_spectrum_zeros = np.zeros(len(wavemode_k))
 
 
 def test_correlation():
-    assert correlation(1, wavemode_k, power_spectrum_zeros) == 0
+    assert correlation(np.array([1]), wavemode_k, power_spectrum_zeros) == 0

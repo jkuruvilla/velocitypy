@@ -10,7 +10,6 @@ setuptools.setup(
     author_email="joseph.k@uni-bonn.de",
     description="Velocity statistics in cosmology",
     long_description=long_description,
-    long_description_content_type="text/markdown",
     url="https://github.com/jkuruvilla/velocitypy",
     packages=setuptools.find_packages(),
     classifiers=[
@@ -19,5 +18,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: OS Independent",
     ],
-    test_suite=tests,
+    test_suite="tests",
 )
