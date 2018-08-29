@@ -15,4 +15,4 @@ __version__ = "0.0.1"
 
 from .realspace import linear
 
-__all__ = ["linear"]
+# __all__ = ["linear"]
