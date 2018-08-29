@@ -33,3 +33,26 @@ def test_correlation_ones_largeseparation():
         * np.pi ** 2
     )
     assert result == pytest.approx(-0.004404, 0.005)
+
+
+def test_radialmean_zeros():
+    """Should return zero"""
+    assert radial_mean(radial_bin_small, wavemode_k, power_spectrum_zeros, 1.) == 0
+
+
+def test_radialmean_ones_smallseparation():
+    result = (
+        radial_mean(radial_bin_small, wavemode_k, power_spectrum_ones, 1.)
+        * -1
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(2.0658, 0.005)
+
+
+def test_radialmean_ones_largeseparation():
+    result = (
+        radial_mean(radial_bin_large, wavemode_k, power_spectrum_ones, 1.)
+        * -1
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(0.00016, 0.000005)
