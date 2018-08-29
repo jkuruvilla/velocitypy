@@ -8,6 +8,8 @@ python:
 before_install: 
   pip install codecov pytest pytest-cov numpy scipy
 install: python setup.py install
-script: pytest --cov=./
+script: 
+  python -m pytest tests/
+  coverage -m pytest tests/  
 after_success:
   codecov
