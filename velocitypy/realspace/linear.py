@@ -24,10 +24,9 @@ def radial_mean(SpatialR, Wavemode_k, PowerSpectrum, OmegaM):
     """Function to compute the linear mean radial pairwise velocity from
     an input linear power spectrum. Mean radial velocity is denoted as <w>
 
-    .. math::
-    \langle w(r) \rangle \hat{r} = -f/pi^2 \int_0^{+\infty} dk k P_{lin}(k) j_1(kr)
+    $\langle w(r) \rangle \hat{r} = -f/pi^2 \int_0^{+\infty} dk k P_{lin}(k) j_1(kr)$
 
-    where :math: 'j_1(x) = sin(x)/x^2 - cos(x)/x'
+    where $j_1(x) = sin(x)/x^2 - cos(x)/x$
 
     Args:
         SpatialR: Pair separation at which the mean velocity should be
