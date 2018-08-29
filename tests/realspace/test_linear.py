@@ -22,7 +22,7 @@ def test_correlation_ones_smallseparation():
         * 2
         * np.pi ** 2
     )
-    assert result == pytest.approx(-86.738, 0.005)
+    assert result == pytest.approx(-86.738, rel=0.005)
 
 
 def test_correlation_ones_largeseparation():
@@ -32,7 +32,7 @@ def test_correlation_ones_largeseparation():
         * 2
         * np.pi ** 2
     )
-    assert result == pytest.approx(-0.004404, 0.005)
+    assert result == pytest.approx(-0.004404, rel=0.005)
 
 
 def test_radialmean_zeros():
@@ -46,7 +46,7 @@ def test_radialmean_ones_smallseparation():
         * -1
         * np.pi ** 2
     )
-    assert result == pytest.approx(2.0658, 0.005)
+    assert result == pytest.approx(2.0658, rel=0.005)
 
 
 def test_radialmean_ones_largeseparation():
@@ -55,4 +55,4 @@ def test_radialmean_ones_largeseparation():
         * -1
         * np.pi ** 2
     )
-    assert result == pytest.approx(0.00016, 0.0005)
+    assert result == pytest.approx(0.000167263, rel=0.0005)
