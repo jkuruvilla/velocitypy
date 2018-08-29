@@ -2,10 +2,11 @@ import numpy as np
 from scipy.integrate import simps
 
 
-def correlation(SpatialR, Wavemode_k, PowerSpectrum):
-    """Function to compute the linear correlation function from
+def density_correlation(SpatialR, Wavemode_k, PowerSpectrum):
+    """Function to compute the linear density correlation function from
     an input linear power spectrum.
     """
+    SpatialR = np.asanyarray(SpatialR)
     LenR = len(SpatialR)
     Corr_Function = np.empty(LenR)
     product = Wavemode_k ** 2 * PowerSpectrum
@@ -39,7 +40,7 @@ def radial_mean(SpatialR, Wavemode_k, PowerSpectrum, OmegaM):
         Mean_Velocity: An array containing the computed mean radial pairwise
                        velocity. In units of h^{-1} Mpc.
     """
-    SpatialR = np.asarray(SpatialR)
+    SpatialR = np.asanyarray(SpatialR)
     growth_rate = OmegaM ** 0.545
 
     LenR = len(SpatialR)
