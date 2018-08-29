@@ -6,7 +6,7 @@ python:
   - "3.5"
   - "3.6"  
 before_install: 
-  pip install codecov pytest pytest-cov numpy scipy
+  pip install codecov pytest pytest-cov numpy scipy coverage
 install: python setup.py install
 script: 
   python -m pytest tests/
