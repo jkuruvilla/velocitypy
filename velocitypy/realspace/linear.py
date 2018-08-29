@@ -121,3 +121,24 @@ def transverse_dispersion(SpatialR, Wavemode_k, PowerSpectrum, OmegaM):
 
     Tangential_Dispersion *= growth_rate ** 2 / (2 * np.pi ** 2)
     return Tangential_Dispersion
+
+
+def onepoint_dispersion(Wavemode_k, PowerSpectrum, OmegaM):
+    """Function to compute the linear one-point velocity dispersion from
+    an input linear power spectrum. One-point velocity dispersion is denoted as \sigma^2_r
+
+    \sigma^2_(r) = f^2/(6pi^2)  \int_0^{+\infty} dk P_{lin}(k)
+
+    Args:
+        Wavemode_k: Wavemodes at which the power spectrum values are computed.
+        PowerSpectrum: Linear power spectrum
+        OmegaM: Matter density (needed to compute f=OmegaM**0.545)
+
+    Returns:
+        OnePoint_Dispersion: The computed one-point velocity dispersion. In units of h^{-2} Mpc^2.
+    """
+    growth_rate = OmegaM ** 0.545
+    integral = PowerSpectrum
+    OnePoint_Dispersion = simps(integral, Wavemode_k)
+    OnePoint_Dispersion *= growth_rate ** 2 / (6 * np.pi ** 2)
+    return OnePoint_Dispersion
