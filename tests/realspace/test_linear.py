@@ -55,4 +55,4 @@ def test_radialmean_ones_largeseparation():
         * -1
         * np.pi ** 2
     )
-    assert result == pytest.approx(0.000167263, rel=0.0005)
+    assert result == pytest.approx(0.000167263, rel=5e-3)
