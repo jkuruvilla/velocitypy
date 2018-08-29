@@ -1,6 +1,11 @@
 import pytest
 import numpy as np
-from velocitypy.realspace.linear import density_correlation, radial_mean
+from velocitypy.realspace.linear import (
+    density_correlation,
+    radial_mean,
+    radial_dispersion,
+    transverse_dispersion,
+)
 
 low_k, high_k = 0.001, 100
 width = 0.0001
@@ -56,3 +61,52 @@ def test_radialmean_ones_largeseparation():
         * np.pi ** 2
     )
     assert result[0] == pytest.approx(0.000167263, abs=5e-4)
+
+
+def test_radialdispersion_zeros():
+    assert (
+        radial_dispersion(radial_bin_small, wavemode_k, power_spectrum_zeros, 1.) == 0
+    )
+
+
+def test_radialdispersion_ones_small():
+    result = (
+        radial_dispersion(radial_bin_small, wavemode_k, power_spectrum_ones, 1.)
+        * 2
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(-0.009007, 0.005)
+
+
+def test_radialdispersion_ones_large():
+    result = (
+        radial_dispersion(radial_bin_large, wavemode_k, power_spectrum_ones, 1.)
+        * 2
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(-0.000333, 0.005)
+
+
+def test_transversedispersion_zeros():
+    assert (
+        transverse_dispersion(radial_bin_small, wavemode_k, power_spectrum_zeros, 1.)
+        == 0
+    )
+
+
+def test_transversedispersion_ones_small():
+    result = (
+        transverse_dispersion(radial_bin_small, wavemode_k, power_spectrum_ones, 1.)
+        * 2
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(0.785116, 0.005)
+
+
+def test_transversedispersion_ones_large():
+    result = (
+        transverse_dispersion(radial_bin_large, wavemode_k, power_spectrum_ones, 1.)
+        * 2
+        * np.pi ** 2
+    )
+    assert result == pytest.approx(0.00621181, 0.005)
