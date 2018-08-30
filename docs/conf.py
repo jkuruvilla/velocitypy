@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = "velocitypy"
-copyright = "2018, Joseph Kuruvilla"
-author = "Joseph Kuruvilla"
+__copyright__ = "Copyright 2018, Joseph Kuruvilla"
+__author__ = "Joseph Kuruvilla"
 
 # The short X.Y version
 version = ""
@@ -143,7 +143,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "velocitypy", "velocitypy Documentation", [author], 1)]
+man_pages = [(master_doc, "velocitypy", "velocitypy Documentation", [__author__], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------
@@ -156,7 +156,7 @@ texinfo_documents = [
         master_doc,
         "velocitypy",
         "velocitypy Documentation",
-        author,
+        __author__,
         "velocitypy",
         "One line description of project.",
         "Miscellaneous",
