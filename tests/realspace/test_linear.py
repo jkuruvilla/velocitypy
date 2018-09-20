@@ -5,7 +5,7 @@ from velocitypy.realspace.linear import (
     radial_mean,
     radial_dispersion,
     transverse_dispersion,
-    onepoint_dispersion,
+    onedimensional_dispersion,
 )
 
 low_k, high_k = 0.001, 100
@@ -113,10 +113,12 @@ def test_transversedispersion_ones_large():
     assert result == pytest.approx(0.00621181, 0.005)
 
 
-def test_onepointdispersion_zeros():
-    assert onepoint_dispersion(wavemode_k, power_spectrum_zeros, 1) == 0
+def test_onedimensionaldispersion_zeros():
+    assert onedimensional_dispersion(wavemode_k, power_spectrum_zeros, 1) == 0
 
 
-def test_onepointdispersion_ones():
-    result = onepoint_dispersion(wavemode_k, power_spectrum_ones, 1) * 6 * np.pi ** 2
+def test_onedimensionaldispersion_ones():
+    result = (
+        onedimensional_dispersion(wavemode_k, power_spectrum_ones, 1) * 6 * np.pi ** 2
+    )
     assert result == pytest.approx(100, 0.005)
