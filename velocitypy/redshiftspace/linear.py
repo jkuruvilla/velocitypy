@@ -1,12 +1,12 @@
 import numpy as np
 from scipy.integrate import simps
+from numba import jit, float32, int32
 
 
+@jit(float32[:](float32[:], float32[:], float32[:], float32, int32), nopython=True)
 def radial_mean_kaiser(SpatialR, Wavemode_k, PowerSpectrum, OmegaM, Sampling_Num=1000):
     """Function to compute the linear mean radial pairwise velocity from
-    an input linear power spectrum in redshift-space. Mean radial velocity is denoted as <w_s>
-
-    $<w_s(r)> = -f/pi^2  \int_{-1}^{+1} dmu \int_0^{+\infty} dk k P_{lin}(k) (1+f*mu^2)^2 * mu * exp(-i*k*r*mu)$
+    an input linear power spectrum in redshift-space. Mean radial velocity
 
     Args:
         SpatialR: Pair separation at which the mean velocity should be
